@@ -53,7 +53,7 @@ class UserController extends Controller
         $user = ($request->get('id') > 0)? User::find($request->get('id')): new User;
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        $user->password = bcrypt($request->get('password'));
         $user->save();
 
         return redirect()->route('user.edit', ['id' => $user->id])->with('status', 'User data is successfully stored');        

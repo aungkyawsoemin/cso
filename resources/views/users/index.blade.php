@@ -41,7 +41,7 @@
                                 Email
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Status
+                                Email Verify
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -58,7 +58,7 @@
                                 {{ $row->email }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $row->id }}
+                                {{ $row->email_verified_at == null? 'Not verify': 'Verify' }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('user.edit', ['id' => $row->id ]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
