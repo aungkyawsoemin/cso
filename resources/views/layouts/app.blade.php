@@ -26,6 +26,9 @@
             .loaded .loading-screen {
                 display: none;
             }
+            .tab li a.active {
+                border-bottom: 1px solid #255be2;
+            }
         </style>
     </head>
     <body class="font-sans antialiased">
@@ -86,12 +89,16 @@
         </div>
         @stack('extra_components')
 
-        <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+        <script src="{{ asset('/js/jquery.js') }}"></script>
         <script>
-            $('.toggle-modal').click(function() {
+            $(document).on('click', '.toggle-modal', function () {
                 var target = $(this).data('modal-target');
                 $('#'+target).toggle();
                 $('#action-loading-icon').hide();
+            });
+            $(document).on('change', 'input[type="checkbox"]', function(){
+                this.value = (Number(this.checked)) == 1? 'true': 'false';
+                console.log(this.value)
             });
             $('.take-action').click(function() {
                 console.log('hello')
@@ -117,6 +124,15 @@
                     document.documentElement.classList.add('dark')
                 }
             }
+            
+            $('[data-action="tab-trigger"]').click(function() {
+                var target = $(this).data('target');
+                var tabName = $(this).data('tab');
+                $('[data-tab-id="'+target+'"]>div').addClass('hidden');
+                $('[data-tab-name="'+tabName+'"]').removeClass('hidden');
+                $('.tab li a').removeClass('active');
+                $(this).addClass('active');
+            });
         </script>
     </body>
 </html>

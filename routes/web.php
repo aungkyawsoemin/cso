@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,9 +35,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/users/store', [UserController::class, 'store'])->name('user.store');
     Route::get('/users/{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
 
-    Route::get('/quiz', function () {
-        return view('quiz.index');
-    })->name('quiz');
+    Route::get('/quiz', [QuizController::class, 'index'])->name('quiz');
+    Route::post('/quiz', [QuizController::class, 'create'])->name('quiz.create');
+    Route::get('/quiz/{id}/edit', [QuizController::class, 'edit'])->name('quiz.edit');
+    Route::post('/quiz/{id}/store', [QuizController::class, 'store'])->name('quiz.store');
+
+    Route::post('/quiz/{id}/question/edit', [QuizController::class, 'editQuestion'])->name('question.edit');
+    Route::post('/quiz/{id}/question/store', [QuizController::class, 'storeQuestion'])->name('question.store');
 
     Route::get('/report', function () {
         return view('report.index');

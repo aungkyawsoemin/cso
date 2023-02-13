@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="lg:flex lg:items-center lg:justify-between">
             <div class="min-w-0 flex-1">
-                <h2 class="text-2xl font-bold leading-7 text-gray-900 dark:text-gray-400 sm:truncate sm:text-3xl sm:tracking-tight">User Managment</h2>
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">User Managment</h2>
             </div>
             <div class="mt-5 flex lg:mt-0 lg:ml-4">
                 <span class="sm:ml-3">
@@ -17,7 +17,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="relative">
-                <div class="flex items-center justify-between pb-4">
+                <div class="flex items-center pb-4">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative">
                         <form method="GET" action="{{ route('users') }}">
@@ -27,7 +27,7 @@
                             <input type="text" id="table-search" name="keywords" value="{{ $keywords }}" placeholder="Search for users" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </form>
                     </div>
-                    <a href="{{ route('users') }}" class="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <a href="{{ route('users') }}" class="mx-3 inline-flex items-center rounded-md border border-transparent bg-gray-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Reset
                     </a>
                 </div>
