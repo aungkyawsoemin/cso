@@ -17,4 +17,8 @@ class Quiz extends Model
     public function questions() {
         return $this->hasMany(Question::class);
     }
+
+    public function showQuestions() {
+        return $this->hasMany(Question::class)->where('status', STATUS_SHOW)->orderBy('sort_order', 'ASC');
+    }
 }

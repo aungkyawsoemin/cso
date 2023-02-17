@@ -17,4 +17,8 @@ class Question extends Model
     public function items() {
         return $this->hasMany(QuestionItem::class);
     }
+
+    public function showItems() {
+        return $this->hasMany(QuestionItem::class)->where('status', STATUS_SHOW)->orderBy('sort_order', 'ASC');
+    }
 }
