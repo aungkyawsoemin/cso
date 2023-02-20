@@ -1,6 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
+import QuizIndex from "../views/Quiz/Index.vue";
+import QuizDetail from "../views/Quiz/Detail.vue";
+import QuizResult from "../views/Quiz/Result.vue";
 import NotFound from "../views/NotFound.vue";
 
 const routes = [
@@ -13,6 +16,21 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+  },
+  {
+    path: "/quiz",
+    name: "QuizIndex",
+    component: QuizIndex,
+  },
+  {
+    path: "/quiz/:id/detail",
+    name: "QuizDetail",
+    component: QuizDetail,
+  },
+  {
+    path: "/quiz/:id/result",
+    name: "QuizResult",
+    component: QuizResult,
   },
   {
     path: "/:catchAll(.*)",
