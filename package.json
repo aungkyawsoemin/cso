@@ -34,7 +34,6 @@
         "webpack": "^5.75.0"
     },
     "dependencies": {
-        "vue-select2": "^0.2.6",
         "vuex": "^4.1.0"
     }
 }

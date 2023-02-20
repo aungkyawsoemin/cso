@@ -22,7 +22,6 @@ const actions = {
                 }
             })
             .then(({data}) => {
-                console.log('data', data.data);
               commit("setQuiz", data.data);
             })
             .catch((err) => console.error(err));
