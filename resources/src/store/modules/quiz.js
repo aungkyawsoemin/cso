@@ -14,7 +14,7 @@ const mutations = {
 
 const actions = {
     fetchQuiz({commit}) {
-        return axios.get("http://localhost:8000/api/quiz",
+        return axios.get("https://cso.bahomart.com/api/quiz",
             {
                 headers: {
                     Authorization: "Basic dmdURW1aYkxaT0tiMVo3enVMdHc6WA==",
