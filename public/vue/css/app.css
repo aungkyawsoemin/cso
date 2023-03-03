@@ -1,60 +1,48 @@
-.eightbit-btn {
-  background: #92CD41;
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  font-size: 16px;
-  padding: 12px;
-  font-family: "Press Start 2P", cursive;
-  text-decoration: none;
-  color: white;
-  box-shadow: inset -4px -4px 0px 0px #4AA52E;
+div.text-bg-light {
+  background-color: #EBECF0 !important;
 }
-.eightbit-btn:hover, .eightbit-btn:focus {
-  background: #76c442;
-  box-shadow: inset -6px -6px 0px 0px #4AA52E;
+
+.logo {
+  display: none;
 }
-.eightbit-btn:active {
-  box-shadow: inset 4px 4px 0px 0px #4AA52E;
+
+.text-bg-light .light-brand-logo {
+  display: block !important;
 }
-.eightbit-btn:before, .eightbit-btn:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  box-sizing: content-box;
+.text-bg-light .border-box {
+  background: #EBECF0;
+  border-radius: 20px;
+  box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgb(255, 255, 255), 0px 0px 4px rgba(255, 255, 255, 0.2) !important;
 }
-.eightbit-btn:before {
-  top: -6px;
-  left: 0;
-  border-top: 6px black solid;
-  border-bottom: 6px black solid;
+.text-bg-light p, .text-bg-light h1, .text-bg-light h2, .text-bg-light h3, .text-bg-light h4, .text-bg-light h5, .text-bg-light h6, .text-bg-light label, .text-bg-light b {
+  color: #909CB0;
 }
-.eightbit-btn:after {
-  left: -6px;
-  top: 0;
-  border-left: 6px black solid;
-  border-right: 6px black solid;
+.text-bg-light p, .text-bg-light label, .text-bg-light b {
+  color: #666d78;
 }
-.eightbit-btn--reset {
-  background: #E76E55;
-  box-shadow: inset -4px -4px 0px 0px #8C2022;
+.text-bg-light button, .text-bg-light .btn {
+  color: #909cb0;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15), -3px -3px 5px rgba(255, 255, 255, 0.65);
 }
-.eightbit-btn--reset:hover, .eightbit-btn--reset:focus {
-  background: #CE372B;
-  box-shadow: inset -6px -6px 0px 0px #8C2022;
+.text-bg-light button:hover, .text-bg-light .btn:hover {
+  box-shadow: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
 }
-.eightbit-btn--reset:active {
-  box-shadow: inset 4px 4px 0px 0px #8C2022;
+
+.text-bg-dark .dark-brand-logo {
+  display: block !important;
 }
-.eightbit-btn--proceed {
-  background: #F7D51D;
-  box-shadow: inset -4px -4px 0px 0px #E59400;
+.text-bg-dark .border-box {
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px #202125, -3px -3px 3px #3e3e3e;
 }
-.eightbit-btn--proceed:hover, .eightbit-btn--proceed:focus {
-  background: #F2C409;
-  box-shadow: inset -6px -6px 0px 0px #E59400;
+.text-bg-dark p, .text-bg-dark h1, .text-bg-dark h2, .text-bg-dark h3, .text-bg-dark h4, .text-bg-dark h5, .text-bg-dark h6, .text-bg-dark label, .text-bg-dark b {
+  color: #d0d0d0;
 }
-.eightbit-btn--proceed:active {
-  box-shadow: inset 4px 4px 0px 0px #E59400;
+.text-bg-dark button, .text-bg-dark .btn {
+  box-shadow: -3px -3px 6px 0 rgba(255, 255, 255, 0.1), 6px 6px 16px 0 rgba(17, 17, 17, 0.53);
+  color: #a7a7a7;
+  outline: none;
+}
+.text-bg-dark button:hover, .text-bg-dark .btn:hover {
+  box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.21), inset -3px -3px 7px rgba(76, 68, 68, 0.45);
 }

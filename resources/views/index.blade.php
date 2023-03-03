@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html class="h-100" lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="utf-8">
@@ -10,8 +10,8 @@
     <link href="{{asset('css/global.css')}}" rel="stylesheet" type="text/css">
 </head>
 
-<body class="with-background d-flex flex-column">
-    <div id="app">
+<body class="with-background d-flex flex-column h-100">
+    <div id="app" class="d-flex h-100">
     </div>
     <script>
     window.Laravel = <?php echo json_encode([

@@ -4,6 +4,7 @@ import About from "../views/About.vue";
 import QuizIndex from "../views/quiz/Index.vue";
 import QuizDetail from "../views/quiz/Detail.vue";
 import QuizResult from "../views/quiz/Result.vue";
+import Landing from "../views/Landing.vue";
 import NotFound from "../views/NotFound.vue";
 
 const routes = [
@@ -11,6 +12,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/landing",
+    name: "Landing",
+    component: Landing,
   },
   {
     path: "/about",

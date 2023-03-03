@@ -1,87 +1,57 @@
 <template>
-    <main class="flex-shrink-0 py-5 container" v-if="quiz != undefined">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="row">
-                    <div class="col-lg-12" v-if="questionIndex === undefined">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img :src="quiz.thumbnail_url" class="img-fluid rounded-start" alt="thumbnail">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3">{{ quiz.name }}</h5>
-                                        <p class="card-text mb-5">{{ quiz.description }}</p>
-                                        <p class="card-text mt-3"><small class="text-muted">{{ totalPoints() }} points</small>
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="eightbit-btn" @click="questionIndex = 0">
-                                            Let's start
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12" v-else>
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <progress id="file" :max="this.quiz.questions.length" :value="questionIndex + 1"></progress>
-                                <div class="col-md-4">
-                                    <button class="point mt-3" :class="{ 'bounce': showBounce }">{{ point
-                                    }}<br><em>Points</em></button>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3">{{ question.title }}</h5>
-                                        <ul class="list-group"
-                                            v-if="[CONSTANTS.QUESTION_TYPE_SINGLE, CONSTANTS.QUESTION_TYPE_MULTIPLE].includes(question.type)"
-                                            :class="{ 'restricted': showDescription !== undefined }">
-                                            <li class="list-group-item" v-for="list in question.items" :key="list.id">
-                                                <input class="form-check-input"
-                                                    :type="question.type === 0 ? 'radio' : 'checkbox'"
-                                                    :name="'item_' + list.id" :id="'item_' + list.id" :value="list.id"
-                                                    v-model="selectedItem">
-                                                <label class="form-check-label" :for="'item_' + list.id"><span
-                                                        v-if="showDescription !== undefined">{{
-                                                            list.is_correct ? '✅' : '❌'
-                                                        }}</span>{{ list.name }}</label>
-                                            </li>
-                                        </ul>
-                                        <select class="form-select" :class="{ 'restricted': showDescription !== undefined }"
-                                            v-if="question.type === CONSTANTS.QUESTION_TYPE_DROPDOWN"
-                                            v-model="selectedItem">
-                                            <option :value="0" selected disabled hidden>Select your answer</option>
-                                            <option v-for="list in question.items" :key="list.id" :value="list.id">
-                                                <span v-if="showDescription !== undefined">{{ list.is_correct ? '✅' : '❌'
-                                                }}</span>{{ list.name }}
-                                            </option>
-                                        </select>
-                                        <div class="mt-3" style="min-height: 100px;">
-                                            <template v-if="showDescription !== undefined">
-                                                <p>{{ answer }}</p>
-                                                <div class="alert alert-primary" role="alert">
-                                                    {{ showDescription }}
-                                                </div>
-                                            </template>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer py-3">
-                                        <button class="eightbit-btn" @click="check()"
-                                            :disabled="selectedItem.length === 0 || selectedItem == 0"
-                                            v-show="showDescription === undefined">Check</button>
-                                        <button class="eightbit-btn eightbit-btn--proceed" @click="next()"
-                                            v-show="showDescription !== undefined">Next</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <main class="px-3 text-center border-box py-5 px-5 w-80 mx-auto">
+        <template v-if="quiz != undefined">
+            <template v-if="questionIndex === undefined">
+                <h3 class="fw-bold lh-1">{{ quiz.name }}</h3>
+                <img :src="quiz.thumbnail_url" class="img-fluid rounded-start rounded-end mt-3" alt="thumbnail"
+                    style="height: 150px;">
+                <p class="lead mt-4">{{ quiz.description }}</p>
+                <p class="lead mb-5">
+                    <button @click="questionIndex = 0" type="button" class="btn btn-lg fw-bold mt-3">Let's start</button>
+                </p>
+            </template>
+            <template v-else>
+                <progress id="file" :max="this.quiz.questions.length" :value="questionIndex + 1"></progress>
+                <h3 class="fw-bold lh-1">{{ question.title }}</h3>
+
+                <img :src="question.thumbnail_url" class="img-fluid rounded-start rounded-end mt-3" alt="thumbnail"
+                    style="height: 150px;">
+
+                <div :class="{ 'restricted': showDescription !== undefined }">
+                    <ul class="list-group"
+                        v-if="[CONSTANTS.QUESTION_TYPE_SINGLE, CONSTANTS.QUESTION_TYPE_MULTIPLE].includes(question.type)">
+                        <li class="list-group-item" v-for="list in question.items" :key="list.id">
+                            <input class="form-check-input" :type="question.type === 0 ? 'radio' : 'checkbox'"
+                                :name="'item_' + list.id" :id="'item_' + list.id" :value="list.id" v-model="selectedItem">
+                            <label class="form-check-label" :for="'item_' + list.id"><span
+                                    v-if="showDescription !== undefined">{{
+                                        list.is_correct ? '✅' : '❌'
+                                    }}</span>{{ list.name }}</label>
+                        </li>
+                    </ul>
+                    <select class="form-select" :class="{ 'restricted': showDescription !== undefined }"
+                        v-if="question.type === CONSTANTS.QUESTION_TYPE_DROPDOWN" v-model="selectedItem">
+                        <option :value="0" selected disabled hidden>Select your answer</option>
+                        <option v-for="list in question.items" :key="list.id" :value="list.id">
+                            <span v-if="showDescription !== undefined">{{ list.is_correct ? '✅' : '❌'
+                            }}</span>{{ list.name }}
+                        </option>
+                    </select>
                 </div>
-            </div>
-        </div>
+
+                <template v-if="showDescription !== undefined">
+                    <p>{{ answer }}</p>
+                    <div class="alert alert-primary" role="alert">
+                        {{ showDescription }}
+                    </div>
+                </template>
+                <div class="card-footer py-3">
+                    <button class="btn" @click="check()" :disabled="selectedItem.length === 0 || selectedItem == 0"
+                        v-show="showDescription === undefined">Check</button>
+                    <button class="btn" @click="next()" v-show="showDescription !== undefined">Next</button>
+                </div>
+            </template>
+        </template>
     </main>
 </template>
 
@@ -93,7 +63,7 @@ export default {
     inject: ['CONSTANTS'],
     data() {
         return {
-            id: this.$route.params.id,
+            id: 1,
             loading: false,
             quiz: undefined,
             questionIndex: undefined,
@@ -126,7 +96,7 @@ export default {
                 this.point += this.question.score;
                 this.showBounce = true;
                 return '✅ Your answer is correct.';
-            } else if(temp.length > 0 && temp.length < correctAnswer.length) {
+            } else if (temp.length > 0 && temp.length < correctAnswer.length) {
                 return '⚠️ Your answer is incomplete.';
             }
             return '❌ Your answer is incorrect.'
@@ -156,7 +126,7 @@ export default {
             this.reset();
         },
         reset() {
-            if (this.question.type == this.CONSTANTS.QUESTION_TYPE_DROPDOWN) this.selectedItem = 0;
+            if (this.question != undefined && this.question.type == this.CONSTANTS.QUESTION_TYPE_DROPDOWN) this.selectedItem = 0;
             else this.selectedItem = [];
             this.showDescription = undefined;
             this.showBounce = false;
@@ -174,34 +144,20 @@ export default {
 </script>
 
 <style scoped>
-main {
-    min-height: 100vh;
+.btn:disabled {
+    text-decoration: line-through;
+    color: #b2b2b2 !important;
+    cursor: not-allowed !important;
 }
+
 .restricted {
     cursor: no-drop !important;
     opacity: 0.7;
-    background-color: gray;
+    border: 3px dashed gray;
 }
 
 .restricted input,
 .restricted label {
     pointer-events: none !important;
-}
-.card-footer {
-    background-color: unset;
-    border-top: unset;
-}
-em {
-    font-size: 8px;
-    display: block;
-    margin-top: -12px;
-}
-
-input.form-check-input {
-    margin-right: 10px;
-    margin-top: 6px;
-}
-label.form-check-label {
-    width: 80%;
 }
 </style>
