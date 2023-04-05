@@ -10,6 +10,46 @@
     width: 80%;
 }
 
+.w-70 {
+    width: 70%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
 .no-shadow {
     box-shadow: unset !important;
+}
+
+.lead,
+p {
+    line-height: 40px;
+}
+
+.btn-cso-primary {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 12px 10px 24px;
+    gap: 8px;
+    width: 192px;
+    height: 44px;
+
+    /* Primary Color */
+    background: #EEAF2F !important;
+    border-radius: 6px;
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height, or 125% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* White */
+    color: #FFFFFF !important;
 }

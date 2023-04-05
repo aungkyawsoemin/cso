@@ -20148,7 +20148,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       selectedItem: [],
       showDescription: undefined,
       point: 0,
-      showBounce: false
+      showBounce: false,
+      answerType: ''
     };
   },
   computed: {
@@ -20175,11 +20176,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       if (temp.length === correctAnswer.length) {
         this.point += this.question.score;
         this.showBounce = true;
-        return '✅ Your answer is correct.';
+        this.answerType = "success";
+        return '✅ မှန်ကန်ပါသည်။';
       } else if (temp.length > 0 && temp.length < correctAnswer.length) {
-        return '⚠️ Your answer is incomplete.';
+        this.answerType = "warning";
+        return '⚠️ အဖြေမှန်အားလုံးကို ရွေးချယ်ထားခြင်းမရှိပါ။';
       }
-      return '❌ Your answer is incorrect.';
+      this.answerType = "error";
+      return '❌ မှားယွင်းနေပါသည်။';
     }
   },
   mounted: function mounted() {
@@ -20286,11 +20290,11 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   style: {
     "margin-left": "20px"
   }
-}, " About us ", -1 /* HOISTED */);
+}, " ကျွန်ုပ်တို့ အကြောင်း ", -1 /* HOISTED */);
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", {
   "class": "mt-auto text-white-50"
 }, null, -1 /* HOISTED */);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal fade\" id=\"aboutUsModal\"><div class=\"modal-dialog modal-xl\"><div class=\"modal-content\"><div class=\"modal-header\"><h1 class=\"modal-title fs-5\" id=\"aboutUsModalLabel\">About us</h1><button type=\"button\" class=\"btn btn-close no-shadow\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body\"><p class=\"lead mt-3\"> We want you to understand the types of information we collect as you use our services </p><p class=\"lead\"> We collect information to provide better services to all our users — from figuring out basic stuff like which language you speak, to more complex things like which ads you’ll find most useful, the people who matter most to you online, or which YouTube videos you might like. The information Google collects, and how that information is used, depends on how you use our services and how you manage your privacy controls. </p><p class=\"lead\"> When you’re not signed in to a Google Account, we store the information we collect with unique identifiers tied to the browser, application, or device you’re using. This allows us to do things like maintain your preferences across browsing sessions, such as your preferred language or whether to show you more relevant search results or ads based on your activity. </p><p class=\"lead\"> When you’re signed in, we also collect information that we store with your Google Account, which we treat as personal information. We want you to understand the types of information we collect as you use our services </p><p class=\"lead\"> We collect information to provide better services to all our users — from figuring out basic stuff like which language you speak, to more complex things like which ads you’ll find most useful, the people who matter most to you online, or which YouTube videos you might like. The information Google collects, and how that information is used, depends on how you use our services and how you manage your privacy controls. </p><p class=\"lead\"> When you’re not signed in to a Google Account, we store the information we collect with unique identifiers tied to the browser, application, or device you’re using. This allows us to do things like maintain your preferences across browsing sessions, such as your preferred language or whether to show you more relevant search results or ads based on your activity. </p><p class=\"lead\"> When you’re signed in, we also collect information that we store with your Google Account, which we treat as personal information. We want you to understand the types of information we collect as you use our services </p><p class=\"lead\"> We collect information to provide better services to all our users — from figuring out basic stuff like which language you speak, to more complex things like which ads you’ll find most useful, the people who matter most to you online, or which YouTube videos you might like. The information Google collects, and how that information is used, depends on how you use our services and how you manage your privacy controls. </p><p class=\"lead\"> We collect information to provide better services to all our users — from figuring out basic stuff like which language you speak, to more complex things like which ads you’ll find most useful, the people who matter most to you online, or which YouTube videos you might like. The information Google collects, and how that information is used, depends on how you use our services and how you manage your privacy controls. </p><p class=\"lead\"> When you’re not signed in to a Google Account, we store the information we collect with unique identifiers tied to the browser, application, or device you’re using. This allows us to do things like maintain your preferences across browsing sessions, such as your preferred language or whether to show you more relevant search results or ads based on your activity. </p><p class=\"lead\"> When you’re signed in, we also collect information that we store with your Google Account, which we treat as personal information. We want you to understand the types of information we collect as you use our services </p><p class=\"lead\"> We collect information to provide better services to all our users — from figuring out basic stuff like which language you speak, to more complex things like which ads you’ll find most useful, the people who matter most to you online, or which YouTube videos you might like. The information Google collects, and how that information is used, depends on how you use our services and how you manage your privacy controls. </p><p class=\"lead\"> When you’re not signed in to a Google Account, we store the information we collect with unique identifiers tied to the browser, application, or device you’re using. This allows us to do things like maintain your preferences across browsing sessions, such as your preferred language or whether to show you more relevant search results or ads based on your activity. </p><p class=\"lead\"> When you’re signed in, we also collect information that we store with your Google Account, which we treat as personal information. We want you to understand the types of information we collect as you use our services </p><p class=\"lead\"> We collect information to provide better services to all our users — from figuring out basic stuff like which language you speak, to more complex things like which ads you’ll find most useful, the people who matter most to you online, or which YouTube videos you might like. The information Google collects, and how that information is used, depends on how you use our services and how you manage your privacy controls. </p></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn\" data-bs-dismiss=\"modal\">Close</button></div></div></div></div>", 1);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal fade\" id=\"aboutUsModal\"><div class=\"modal-dialog modal-xl\"><div class=\"modal-content\"><div class=\"modal-header\"><h1 class=\"modal-title fs-5\" id=\"aboutUsModalLabel\">ကျွန်ုပ်တို့ အကြောင်း</h1><button type=\"button\" class=\"btn btn-close no-shadow\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body\"><p class=\"lead mt-3\"> CSO Academy ကို CSO များမှ မြန်မာနိုင်ငံရှိအဖွဲ့အစည်းများ​၏ လူထုအသိုင်းဝိုင်းသို့ နည်းပညာသုံးဖြန့်ဝေမှု နှင့် နှီးနှောဆက်သွယ်ချိတ်ဆက်မှုကို ပိုမိုတိုးတက်ကောင်းမွန်လာစေရန်အပြင် ၎င်းအဖွဲ့အစည်းများ​၏ ဒစ်ဂျစ်တယ်အသွင်ကူးပြောင်းမှုကိုအားဖြည့်အထောက်အကူပြုနိုင်ရန် ရည်ရွယ်၍တည်ဆောက်ထားပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။ </p><p class=\"lead\"> CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။ </p><p class=\"lead\"> CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။ </p><p class=\"lead\"> CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။ </p><p class=\"lead\"> CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။ </p></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn\" data-bs-dismiss=\"modal\">ပိတ်မည်</button></div></div></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
@@ -20350,17 +20354,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "px-3 text-center border-box py-5 px-5 h-75 w-80 mx-auto"
+  "class": "text-center border-box py-5 px-5 mt-5 h-75 w-70 mx-auto",
+  style: {
+    "margin-bottom": "5em"
+  }
 };
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "d-none d-lg-block d-xl-block mt-5"
 }, null, -1 /* HOISTED */);
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "display-4 fw-bold lh-1"
-}, "Amazing Title Here", -1 /* HOISTED */);
+}, "ဒီဂျစ်တယ် လုံခြုံရေး", -1 /* HOISTED */);
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "lead mt-5"
-}, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores repudiandae assumenda libero porro excepturi eveniet adipisci, quaerat quam inventore ea recusandae dolorum tempora quidem rem quae repellat corrupti ex at?", -1 /* HOISTED */);
+  "class": "lead mt-5 px-5"
+}, "CSO Academy ကို CSO များမှ မြန်မာနိုင်ငံရှိအဖွဲ့အစည်းများ​၏ လူထုအသိုင်းဝိုင်းသို့ နည်းပညာသုံးဖြန့်ဝေမှု နှင့် နှီးနှောဆက်သွယ်ချိတ်ဆက်မှုကို ပိုမိုတိုးတက်ကောင်းမွန်လာစေရန်အပြင် ၎င်းအဖွဲ့အစည်းများ​၏ ဒစ်ဂျစ်တယ်အသွင်ကူးပြောင်းမှုကိုအားဖြည့်အထောက်အကူပြုနိုင်ရန် ရည်ရွယ်၍တည်ဆောက်ထားပါသည်။", -1 /* HOISTED */);
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "d-none d-md-block d-lg-block d-xl-block mt-5"
 }, null, -1 /* HOISTED */);
@@ -20377,10 +20384,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     },
     type: "button",
-    "class": "btn btn-lg fw-bold mt-3"
+    "class": "btn btn-cso-primary mt-3"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Getting started")];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ကြည့်ရှုရန် ")];
     }),
     _: 1 /* STABLE */
   })])]);
@@ -20619,33 +20626,42 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-518613d7"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 var _hoisted_1 = {
-  "class": "px-3 text-center border-box py-5 px-5 w-80 mx-auto"
+  "class": "border-box py-5 px-5 w-60 mx-auto"
 };
-var _hoisted_2 = {
-  "class": "fw-bold lh-1"
+var _hoisted_2 = ["src"];
+var _hoisted_3 = {
+  "class": "mx-auto py-3 px-5"
 };
-var _hoisted_3 = ["src"];
 var _hoisted_4 = {
-  "class": "lead mt-4"
+  "class": "fw-bold lh-1 mt-2"
 };
 var _hoisted_5 = {
+  "class": "lead mt-4"
+};
+var _hoisted_6 = {
   "class": "lead mb-5"
 };
-var _hoisted_6 = ["max", "value"];
-var _hoisted_7 = {
-  "class": "fw-bold lh-1"
-};
+var _hoisted_7 = ["max", "value"];
 var _hoisted_8 = ["src"];
 var _hoisted_9 = {
+  "class": "answer-box"
+};
+var _hoisted_10 = {
+  "class": "fw-bold lh-1 mb-3"
+};
+var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "အဖြေမှန်တစ်ခုကို ရွေးချယ်ပါ။", -1 /* HOISTED */);
+});
+var _hoisted_12 = {
   key: 0,
   "class": "list-group"
 };
-var _hoisted_10 = ["type", "name", "id", "value"];
-var _hoisted_11 = ["for"];
-var _hoisted_12 = {
+var _hoisted_13 = ["type", "name", "id", "value"];
+var _hoisted_14 = ["for"];
+var _hoisted_15 = {
   key: 0
 };
-var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     value: 0,
     selected: "",
@@ -20653,54 +20669,48 @@ var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
     hidden: ""
   }, "Select your answer", -1 /* HOISTED */);
 });
-var _hoisted_14 = ["value"];
-var _hoisted_15 = {
+var _hoisted_17 = ["value"];
+var _hoisted_18 = {
   key: 0
 };
-var _hoisted_16 = {
-  "class": "alert alert-primary",
+var _hoisted_19 = {
+  "class": "alert alert-success mt-3",
   role: "alert"
 };
-var _hoisted_17 = {
+var _hoisted_20 = {
   "class": "card-footer py-3"
 };
-var _hoisted_18 = ["disabled"];
+var _hoisted_21 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [$data.quiz != undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
   }, [$data.questionIndex === undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.quiz.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $data.quiz.thumbnail_url,
-    "class": "img-fluid rounded-start rounded-end mt-3",
-    alt: "thumbnail",
-    style: {
-      "height": "150px"
-    }
-  }, null, 8 /* PROPS */, _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.quiz.description), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "img-fluid",
+    alt: "thumbnail"
+  }, null, 8 /* PROPS */, _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.quiz.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.quiz.description), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $data.questionIndex = 0;
     }),
     type: "button",
-    "class": "btn btn-lg fw-bold mt-3"
-  }, "Let's start")])], 64 /* STABLE_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    "class": "btn btn-cso-primary mt-3"
+  }, "စတင်ဖြေဆိုမည်")])])], 64 /* STABLE_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("progress", {
     id: "file",
     max: this.quiz.questions.length,
     value: $data.questionIndex + 1
-  }, null, 8 /* PROPS */, _hoisted_6), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.question.title), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: $options.question.thumbnail_url,
-    "class": "img-fluid rounded-start rounded-end mt-3",
-    alt: "thumbnail",
-    style: {
-      "height": "150px"
-    }
-  }, null, 8 /* PROPS */, _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, null, 8 /* PROPS */, _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $data.quiz.thumbnail_url,
+    "class": "img-fluid",
+    alt: "thumbnail"
+  }, null, 8 /* PROPS */, _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.question.title), 1 /* TEXT */), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       'restricted': $data.showDescription !== undefined
     })
-  }, [[$options.CONSTANTS.QUESTION_TYPE_SINGLE, $options.CONSTANTS.QUESTION_TYPE_MULTIPLE].includes($options.question.type) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.question.items, function (list) {
+  }, [[$options.CONSTANTS.QUESTION_TYPE_SINGLE, $options.CONSTANTS.QUESTION_TYPE_MULTIPLE].includes($options.question.type) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.question.items, function (list) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       "class": "list-group-item",
       key: list.id
@@ -20713,10 +20723,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
         return $data.selectedItem = $event;
       })
-    }, null, 8 /* PROPS */, _hoisted_10), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.selectedItem]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    }, null, 8 /* PROPS */, _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, $data.selectedItem]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "class": "form-check-label",
       "for": 'item_' + list.id
-    }, [$data.showDescription !== undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.is_correct ? '✅' : '❌'), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.name), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_11)]);
+    }, [$data.showDescription !== undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.is_correct ? '✅' : '❌'), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.name), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_14)]);
   }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.question.type === $options.CONSTANTS.QUESTION_TYPE_DROPDOWN ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
     key: 1,
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["form-select", {
@@ -20725,25 +20735,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.selectedItem = $event;
     })
-  }, [_hoisted_13, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.question.items, function (list) {
+  }, [_hoisted_16, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.question.items, function (list) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: list.id,
       value: list.id
-    }, [$data.showDescription !== undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.is_correct ? '✅' : '❌'), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.name), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_14);
+    }, [$data.showDescription !== undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.is_correct ? '✅' : '❌'), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.name), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_17);
   }), 128 /* KEYED_FRAGMENT */))], 2 /* CLASS */)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.selectedItem]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */), $data.showDescription !== undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.answer), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.showDescription), 1 /* TEXT */)], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn",
+  }, [$data.answerType == 'success' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 0,
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["alert mt-3", {
+      'alert-success': $data.answerType == 'success'
+    }]),
+    role: "alert"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.answer), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.showDescription), 1 /* TEXT */)], 2 /* CLASS */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 1
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["alert mt-3", {
+      'alert-danger': $data.answerType == 'error',
+      'alert-warning': $data.answerType == 'warning'
+    }]),
+    role: "alert"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.answer), 1 /* TEXT */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.showDescription), 1 /* TEXT */)])], 64 /* STABLE_FRAGMENT */))], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-cso-primary mx-auto mt-3",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $options.check();
     }),
-    disabled: $data.selectedItem.length === 0 || $data.selectedItem == 0
-  }, "Check", 8 /* PROPS */, _hoisted_18), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showDescription === undefined]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn",
+    disabled: $data.selectedItem.length === 0 || $data.selectedItem == 0,
+    style: {
+      "display": "block"
+    }
+  }, "စစ်ဆေးမည်", 8 /* PROPS */, _hoisted_21), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showDescription === undefined]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-cso-primary mx-auto mt-3",
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.next();
-    })
-  }, "Next", 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showDescription !== undefined]])])], 64 /* STABLE_FRAGMENT */))], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    }),
+    style: {
+      "display": "block"
+    }
+  }, "နောက်ထပ်", 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showDescription !== undefined]])])])], 64 /* STABLE_FRAGMENT */))], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),
@@ -23026,7 +23056,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.btn[data-v-518613d7]:disabled {\r\n    text-decoration: line-through;\r\n    color: #b2b2b2 !important;\r\n    cursor: not-allowed !important;\n}\n.restricted[data-v-518613d7] {\r\n    cursor: no-drop !important;\r\n    opacity: 0.7;\r\n    border: 3px dashed gray;\n}\n.restricted input[data-v-518613d7],\r\n.restricted label[data-v-518613d7] {\r\n    pointer-events: none !important;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.border-box > div[data-v-518613d7] {\r\n  background: #fff;\r\n  border-radius: 0px 0px 10px 10px;\n}\n[data-bs-theme=dark] .border-box > div[data-v-518613d7] {\r\n  background: transparent !important;\n}\n.answer-box[data-v-518613d7] {\r\n  padding: 35px 70px;\n}\n.answer-box h3[data-v-518613d7] {\r\n  font-family: 'Noto Sans Myanmar';\r\n  font-style: normal;\r\n  font-weight: 700;\r\n  font-size: 24px;\r\n  line-height: 36px !important;\n}\n.btn[data-v-518613d7]:disabled {\r\n    background-color: #D9D9D9 !important;\r\n    color: rgba(34, 34, 34, 0.6) !important;\r\n    cursor: not-allowed !important;\n}\n.alert p[data-v-518613d7]:nth-child(1) {\r\n  margin-bottom: 5px;\n}\n.alert p[data-v-518613d7]:nth-child(2) {\r\n  line-height: 28px;\r\n  padding-left: 25px;\r\n  padding-top: 0px;\n}\n.list-group li[data-v-518613d7] {\r\n  margin-bottom: 16px;\r\n  border-radius: 20px !important;\r\n  padding: 8px 15px 10px;\r\n  border: 0.8px solid grey;\r\n  border-top-width: 0.8px !important;\n}\n.list-group li input[data-v-518613d7] {\r\n  margin-top: 5px;\n}\n.list-group li label[data-v-518613d7] {\r\n  margin-left: 8px;\n}\n.restricted[data-v-518613d7] {\r\n    cursor: no-drop !important;\r\n    opacity: 0.7;\n}\n.restricted input[data-v-518613d7],\r\n.restricted label[data-v-518613d7] {\r\n    pointer-events: none !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

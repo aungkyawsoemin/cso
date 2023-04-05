@@ -10,7 +10,7 @@
     <link href="{{asset('css/global.css')}}" rel="stylesheet" type="text/css">
 </head>
 
-<body class="with-background d-flex flex-column h-100">
+<body class="with-background d-flex flex-column">
     <div id="app" class="d-flex h-100">
     </div>
     <script>

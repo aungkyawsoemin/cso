@@ -13,7 +13,7 @@
             {{ modeLight ? 'Dark' : 'Light' }}</button>
           <button type="button" class="btn ml-2" data-bs-toggle="modal" data-bs-target="#aboutUsModal"
             style="    margin-left: 20px;">
-            About us
+            ကျွန်ုပ်တို့ အကြောင်း
           </button>
         </div>
       </div>
@@ -30,92 +30,52 @@
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="aboutUsModalLabel">About us</h1>
+            <h1 class="modal-title fs-5" id="aboutUsModalLabel">ကျွန်ုပ်တို့ အကြောင်း</h1>
             <button type="button" class="btn btn-close no-shadow" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <p class="lead mt-3">
-            We want you to understand the types of information we collect as you use our services
+              CSO Academy ကို CSO များမှ မြန်မာနိုင်ငံရှိအဖွဲ့အစည်းများ​၏ လူထုအသိုင်းဝိုင်းသို့ နည်းပညာသုံးဖြန့်ဝေမှု နှင့် နှီးနှောဆက်သွယ်ချိတ်ဆက်မှုကို ပိုမိုတိုးတက်ကောင်းမွန်လာစေရန်အပြင် ၎င်းအဖွဲ့အစည်းများ​၏ ဒစ်ဂျစ်တယ်အသွင်ကူးပြောင်းမှုကိုအားဖြည့်အထောက်အကူပြုနိုင်ရန် ရည်ရွယ်၍တည်ဆောက်ထားပါသည်။
             </p>
             <p class="lead">
-            We collect information to provide better services to all our users — from figuring out basic stuff like which
-            language you speak, to more complex things like which ads you’ll find most useful, the people who matter most
-            to you online, or which YouTube videos you might like. The information Google collects, and how that
-            information is used, depends on how you use our services and how you manage your privacy controls.
+              ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။
             </p>
             <p class="lead">
-            When you’re not signed in to a Google Account, we store the information we collect with unique identifiers
-            tied to the browser, application, or device you’re using. This allows us to do things like maintain your
-            preferences across browsing sessions, such as your preferred language or whether to show you more relevant
-            search results or ads based on your activity.
+              ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။
             </p>
             <p class="lead">
-            When you’re signed in, we also collect information that we store with your Google Account, which we treat as
-            personal information. We want you to understand the types of information we collect as you use our services
+              CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။
             </p>
             <p class="lead">
-            We collect information to provide better services to all our users — from figuring out basic stuff like which
-            language you speak, to more complex things like which ads you’ll find most useful, the people who matter most
-            to you online, or which YouTube videos you might like. The information Google collects, and how that
-            information is used, depends on how you use our services and how you manage your privacy controls.
+              ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။
             </p>
             <p class="lead">
-            When you’re not signed in to a Google Account, we store the information we collect with unique identifiers
-            tied to the browser, application, or device you’re using. This allows us to do things like maintain your
-            preferences across browsing sessions, such as your preferred language or whether to show you more relevant
-            search results or ads based on your activity.
+              ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။
             </p>
             <p class="lead">
-            When you’re signed in, we also collect information that we store with your Google Account, which we treat as
-            personal information. We want you to understand the types of information we collect as you use our services
+              CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။
             </p>
             <p class="lead">
-            We collect information to provide better services to all our users — from figuring out basic stuff like which
-            language you speak, to more complex things like which ads you’ll find most useful, the people who matter most
-            to you online, or which YouTube videos you might like. The information Google collects, and how that
-            information is used, depends on how you use our services and how you manage your privacy controls.
+              ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။
             </p>
             <p class="lead">
-            We collect information to provide better services to all our users — from figuring out basic stuff like which
-            language you speak, to more complex things like which ads you’ll find most useful, the people who matter most
-            to you online, or which YouTube videos you might like. The information Google collects, and how that
-            information is used, depends on how you use our services and how you manage your privacy controls.
+              ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။
             </p>
             <p class="lead">
-            When you’re not signed in to a Google Account, we store the information we collect with unique identifiers
-            tied to the browser, application, or device you’re using. This allows us to do things like maintain your
-            preferences across browsing sessions, such as your preferred language or whether to show you more relevant
-            search results or ads based on your activity.
+              CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။
             </p>
             <p class="lead">
-            When you’re signed in, we also collect information that we store with your Google Account, which we treat as
-            personal information. We want you to understand the types of information we collect as you use our services
+              ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။
             </p>
             <p class="lead">
-            We collect information to provide better services to all our users — from figuring out basic stuff like which
-            language you speak, to more complex things like which ads you’ll find most useful, the people who matter most
-            to you online, or which YouTube videos you might like. The information Google collects, and how that
-            information is used, depends on how you use our services and how you manage your privacy controls.
+              ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။
             </p>
             <p class="lead">
-            When you’re not signed in to a Google Account, we store the information we collect with unique identifiers
-            tied to the browser, application, or device you’re using. This allows us to do things like maintain your
-            preferences across browsing sessions, such as your preferred language or whether to show you more relevant
-            search results or ads based on your activity.
-            </p>
-            <p class="lead">
-            When you’re signed in, we also collect information that we store with your Google Account, which we treat as
-            personal information. We want you to understand the types of information we collect as you use our services
-            </p>
-            <p class="lead">
-            We collect information to provide better services to all our users — from figuring out basic stuff like which
-            language you speak, to more complex things like which ads you’ll find most useful, the people who matter most
-            to you online, or which YouTube videos you might like. The information Google collects, and how that
-            information is used, depends on how you use our services and how you manage your privacy controls.
+              CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။
             </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-bs-dismiss="modal">ပိတ်မည်</button>
           </div>
         </div>
       </div>
