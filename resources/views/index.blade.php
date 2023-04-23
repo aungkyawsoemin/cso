@@ -14,7 +14,7 @@
     <meta property="og:site_name" content="CSO Academy">
     <meta property="og:title" content="CSO Academy">
     <meta property="og:description" content="CSO Academy ကို CSO များမှ မြန်မာနိုင်ငံရှိအဖွဲ့အစည်းများ​၏ လူထုအသိုင်းဝိုင်းသို့ လိုအပ်သည့်အကူညီအထောက်ပံ့များပေ">
-    <meta property="og:url" content="{{ asset('images/cso_og_logo.jpg') }}">
+    <meta property="og:url" content="{{ asset('images/social_share_cso.png') }}">
     <meta property="og:image:alt" content="CSO Academy">
 
 </head>
