@@ -10,6 +10,13 @@
     <link href="{{asset('vue/css/app.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/global.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <meta property="og:site_name" content="CSO Academy">
+    <meta property="og:title" content="CSO Academy">
+    <meta property="og:description" content="CSO Academy ကို CSO များမှ မြန်မာနိုင်ငံရှိအဖွဲ့အစည်းများ​၏ လူထုအသိုင်းဝိုင်းသို့ လိုအပ်သည့်အကူညီအထောက်ပံ့များပေ">
+    <meta property="og:url" content="{{ asset('images/cso_og_logo.jpg') }}">
+    <meta property="og:image:alt" content="CSO Academy">
+
 </head>
 
 <body class="with-background d-flex flex-column">
