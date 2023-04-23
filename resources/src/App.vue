@@ -10,7 +10,7 @@
 
         <div class="mode-switch">
           <button class="btn" @click="modeLight = !modeLight">
-            {{ modeLight ? 'Dark' : 'Light' }}</button>
+            <i class="fa" :class="{'fa-solid fa-moon': modeLight, 'fa-solid fa-sun': !modeLight}"></i></button>
           <button type="button" class="btn ml-2" data-bs-toggle="modal" data-bs-target="#aboutUsModal"
             style="    margin-left: 20px;">
             ကျွန်ုပ်တို့ အကြောင်း

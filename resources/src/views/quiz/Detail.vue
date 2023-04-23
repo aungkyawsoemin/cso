@@ -1,5 +1,6 @@
 <template>
     <main class="border-box py-5 px-5 w-60 mx-auto">
+        <Skeleton v-if="quiz == undefined"></Skeleton>
         <template v-if="quiz != undefined">
             <template v-if="questionIndex === undefined">
                 <img :src="quiz.thumbnail_url" class="img-fluid" alt="thumbnail">
@@ -12,8 +13,13 @@
                 </div>
             </template>
             <template v-else>
-                <progress id="file" :max="this.quiz.questions.length" :value="questionIndex + 1"></progress>
-                <img :src="quiz.thumbnail_url" class="img-fluid" alt="thumbnail">
+                <div class="page-label">
+                    <span> {{ (questionIndex + 1) }} / {{  quiz.questions.length  }}</span>
+                </div>
+                <div class="progress-container" :style="{'--pValue': progress + '%'}">
+                    <progress id="file" :max="this.quiz.questions.length" :value="questionIndex + 1"></progress>
+                </div>
+                <!-- <img :src="quiz.thumbnail_url" class="img-fluid" alt="thumbnail"> -->
 
                 <div class="answer-box">
                     <h3 class="fw-bold lh-1 mb-3">{{ question.title }}</h3>
@@ -21,13 +27,10 @@
                     <div :class="{ 'restricted': showDescription !== undefined }">
                         <ul class="list-group"
                             v-if="[CONSTANTS.QUESTION_TYPE_SINGLE, CONSTANTS.QUESTION_TYPE_MULTIPLE].includes(question.type)">
-                            <li class="list-group-item" v-for="list in question.items" :key="list.id">
+                            <li class="list-group-item" :class="{'correct-item': showDescription !== undefined && list.is_correct, 'incorrect-item': showDescription !== undefined && !list.is_correct}" v-for="list in question.items" :key="list.id">
                                 <input class="form-check-input" :type="question.type === 0 ? 'radio' : 'checkbox'"
                                     :name="'item_' + list.id" :id="'item_' + list.id" :value="list.id" v-model="selectedItem">
-                                <label class="form-check-label" :for="'item_' + list.id"><span
-                                        v-if="showDescription !== undefined">{{
-                                            list.is_correct ? '✅' : '❌'
-                                        }}</span>{{ list.name }}</label>
+                                <label class="form-check-label" :for="'item_' + list.id">{{ list.name }}</label>
                             </li>
                         </ul>
                         <select class="form-select" :class="{ 'restricted': showDescription !== undefined }"
@@ -69,10 +72,14 @@
 
 <script>
 import { inject } from 'vue';
+import Skeleton from "../components/skeleton.vue";
 
 export default {
     name: "QuizDetail",
     inject: ['CONSTANTS'],
+    components: {
+        Skeleton
+    },
     data() {
         return {
             id: 1,
@@ -87,6 +94,9 @@ export default {
         };
     },
     computed: {
+        progress() {
+            return ((this.questionIndex + 1)/this.quiz.questions.length) * 100;
+        },
         count() {
             return this.$store.getters.count;
         },
@@ -218,5 +228,66 @@ export default {
 .restricted input,
 .restricted label {
     pointer-events: none !important;
+}
+.list-group-item.correct-item:after {
+    position: absolute;
+    right: -25px;
+    content: '✅';
+}
+.list-group-item.incorrect-item:after {
+    position: absolute;
+    right: -25px;
+    content: '❌';
+}
+
+.progress-container {
+  position: relative;
+  display: inline-block;
+  background: rgb(238 175 47 / 20%) !important;
+  height: 8px;
+  border-radius: 6px !important;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--pValue);
+  background: #e4b24c;
+}
+
+progress {
+  opacity: 0;
+}
+
+.form-check-input:checked {
+    background-color: rgb(247 203 69) !important;
+    border-color: #f6cb46 !important;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(247,203,69,.25) !important;
+}
+
+.form-check-input:active {
+    border: 1px solid #f6cb46 !important;
+}
+main {
+    position: relative;
+}
+.page-label {
+    left: 0px;
+    top: 100px;
+    position: absolute;
+    padding: 8px 10px;
+    border-radius: 0px 5px 5px 0px !important;
+    background: #D9D9D9 !important;
+    display: block;
+/*     border: 1px solid #dcb45e;
+    border-left: 0px; */
 }
 </style>
