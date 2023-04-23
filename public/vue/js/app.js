@@ -21127,7 +21127,7 @@ var mutations = {
 var actions = {
   fetchQuiz: function fetchQuiz(_ref) {
     var commit = _ref.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("http://localhost:8000/api/quiz", {
+    return axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/api/quiz", {
       headers: {
         Authorization: "Basic dmdURW1aYkxaT0tiMVo3enVMdHc6WA==",
         "Content-Type": "application/json"
