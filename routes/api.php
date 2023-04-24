@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\QuizController;
+use App\Http\Controllers\Api\CsoUserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,3 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('quiz', [QuizController::class, 'index']);
+
+Route::get('cso-user/{uuid}', [CsoUserController::class, 'show']);
+Route::post('cso-user/{uuid}', [CsoUserController::class, 'store']);
