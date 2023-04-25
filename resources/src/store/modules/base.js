@@ -34,7 +34,6 @@ const actions = {
     },
     getUser({commit}) {
         if(localStorage.userId == undefined) {
-            console.log('new')
             state.user.uuid = localStorage.userId = uuid.v4();
             axios.post("/api/cso-user/"+state.user.uuid, state.user,
             {
@@ -48,7 +47,6 @@ const actions = {
             })
             .catch((err) => console.error(err));
         } else {
-            console.log('return')
             state.user.uuid = localStorage.userId
             axios.get("/api/cso-user/"+state.user.uuid,
             {
@@ -58,7 +56,6 @@ const actions = {
                 }
             })
             .then(({data}) => {
-                console.log(data.data)
                 commit('setUser', data.data)
             })
         }

@@ -20007,11 +20007,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log("hello");
+    //
   },
   methods: {
     save: function save() {
-      console.log('hello');
+      //
     }
   }
 });
@@ -20069,8 +20069,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       var correctAnswer = this.question.items.filter(function (x) {
         return x.is_correct === 1;
       });
-      console.log(temp.length);
-      console.log(correctAnswer.length);
       if (temp.length === correctAnswer.length) {
         this.point += this.question.score;
         this.showBounce = true;
@@ -20181,6 +20179,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     };
   },
   computed: {
+    storeResult: function storeResult() {
+      return this.$store.getters.result;
+    },
     progress: function progress() {
       return (this.questionIndex + 1) / this.quiz.questions.length * 100;
     },
@@ -20202,20 +20203,24 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       var correctAnswer = this.question.items.filter(function (x) {
         return x.is_correct === 1;
       });
-      console.log(temp.length);
-      console.log(correctAnswer.length);
       if (temp.length === correctAnswer.length) {
         this.point += this.question.score;
         this.showBounce = true;
         this.answerType = "success";
+        this.storeResult.correct += 1;
         return '✅ မှန်ကန်ပါသည်။';
       } else if (temp.length > 0 && temp.length < correctAnswer.length) {
         this.answerType = "warning";
+        this.storeResult.incomplete += 1;
         return '⚠️ အဖြေမှန်အားလုံးကို ရွေးချယ်ထားခြင်းမရှိပါ။';
       }
+      this.storeResult.incorrect += 1;
       this.answerType = "error";
       return '❌ မှားယွင်းနေပါသည်။';
     }
+  },
+  beforeMount: function beforeMount() {
+    this.$store.dispatch("resetResult");
   },
   mounted: function mounted() {
     var _this = this;
@@ -20251,6 +20256,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       this.showDescription = this.question.correct_description;
     },
     next: function next() {
+      this.$store.dispatch("updateResult", this.storeResult);
       // check answer and show correct description;
       if (this.questionIndex < this.quiz.questions.length - 1) this.questionIndex += 1;else {
         this.$router.push({
@@ -20272,7 +20278,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         return total + object.score;
       }, 0);
     },
-    showCountdown: function showCountdown(i) {}
+    startQuiz: function startQuiz() {
+      this.questionIndex = 0;
+    }
   }
 });
 
@@ -20309,7 +20317,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart.register(chart_js__WEBPACK_IMPORTED_
         labels: ['အဖြေမှန်', 'အဖြေမှား', 'မတိကျသော အဖြေ'],
         datasets: [{
           backgroundColor: ['#6fd9ea', '#e0456f', '#e4b24c', '#DD1B16'],
-          data: [40, 20, 12]
+          data: [this.$store.getters.result.correct, this.$store.getters.result.incorrect, this.$store.getters.result.incomplete]
         }]
       },
       chartOptions: {
@@ -20378,7 +20386,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", {
   "class": "mt-auto text-white-50"
 }, null, -1 /* HOISTED */);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal fade\" id=\"aboutUsModal\"><div class=\"modal-dialog modal-xl\"><div class=\"modal-content\"><div class=\"modal-header\"><h1 class=\"modal-title fs-5\" id=\"aboutUsModalLabel\">ကျွန်ုပ်တို့ အကြောင်း</h1><button type=\"button\" class=\"btn btn-close no-shadow\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body\"><p class=\"lead mt-3\"> CSO Academy ကို CSO များမှ မြန်မာနိုင်ငံရှိအဖွဲ့အစည်းများ​၏ လူထုအသိုင်းဝိုင်းသို့ နည်းပညာသုံးဖြန့်ဝေမှု နှင့် နှီးနှောဆက်သွယ်ချိတ်ဆက်မှုကို ပိုမိုတိုးတက်ကောင်းမွန်လာစေရန်အပြင် ၎င်းအဖွဲ့အစည်းများ​၏ ဒစ်ဂျစ်တယ်အသွင်ကူးပြောင်းမှုကိုအားဖြည့်အထောက်အကူပြုနိုင်ရန် ရည်ရွယ်၍တည်ဆောက်ထားပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။ </p><p class=\"lead\"> CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။ </p><p class=\"lead\"> CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။ </p><p class=\"lead\"> CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန့်ကျက်မှုနှင့် ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းပြုလုပ်ရာတွင် ကြုံတွေ့နိုင်သည့် အခက်အခဲများ၊ လေ့လာမှတ်သားသင့်သည့် အချက်များနှင့် လိုက်နာကျင့်သုံးသင့်သည့် နည်းစနစ်များ အကြောင်းကို လေ့လာ ဖတ်ရှုနိုင်ပါသည်။ </p><p class=\"lead\"> ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှု၊ ဒစ်ဂျစ်တယ်သို့ ပြောင်းလဲခြင်းနှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်း များလုပ်ဆောင်ရာတွင် အသုံးပြုနိုင်မည့် လမ်းညွှန်ချက် ကိရိယာများကို ရယူနိုင်ပါသည်။ </p><p class=\"lead\"> CSO Academy ကနေ ဒစ်ဂျစ်တယ်အသုံးပြုဖြန်ကျက်မှုနှင့် အသိုင်းအဝိုင်းထိတွေ့ချိတ်ဆက်မှုသင်တန်း၊ ဒစ်ဂျစ်တယ် အသွင်ပြောင်းခြင်းသင်တန်း နှင့် ဒေတာစွမ်းရည် တည်ဆောက်ခြင်းသင်တန်း များကို အခမဲ့လေ့လာသင်ယူနိုင်ပါသည်။ </p></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn\" data-bs-dismiss=\"modal\">ပိတ်မည်</button></div></div></div></div>", 1);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal fade\" id=\"aboutUsModal\"><div class=\"modal-dialog modal-xl\"><div class=\"modal-content\"><div class=\"modal-header\"><h1 class=\"modal-title fs-5\" id=\"aboutUsModalLabel\">ကျွန်ုပ်တို့ အကြောင်း</h1><button type=\"button\" class=\"btn btn-close no-shadow\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body\"><p class=\"lead mt-3\"> CSO Academy ကို CSO များမှ မြန်မာနိုင်ငံရှိအဖွဲ့အစည်းများ​၏ လူထုအသိုင်းဝိုင်းသို့ လိုအပ်သည့်အကူညီအထောက်ပံ့များပေးရာတွင် နည်းပညာသုံးဖြန့်ဝေမှု နှင့် နှီးနှောဆက်သွယ်ချိတ်ဆက်မှုကို ပိုမိုတိုးတက်ကောင်းမွန်လာစေရန်အပြင် ၎င်းအဖွဲ့အစည်းများ​၏ ဒစ်ဂျစ်တယ်အသွင်ကူးပြောင်းမှု (Digital Transformation) နှင့် အဖွဲ့အစည်းတိုးတက်မှု (Organizational Development) များကိုအားဖြည့်အထောက်အကူပြုနိုင်ရန် ရည်ရွယ်၍တည်ထောင်ထားပါသည်။ </p></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn\" data-bs-dismiss=\"modal\">ပိတ်မည်</button></div></div></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
@@ -20443,7 +20451,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "text-center border-box py-5 px-5 mt-5 h-75 w-70 mx-auto",
+  "class": "text-center border-box py-5 px-md-5 mt-5 h-md-75 col-md-8 mx-auto",
   style: {
     "margin-bottom": "5em"
   }
@@ -20455,7 +20463,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "display-4 fw-bold lh-1"
 }, "ဒီဂျစ်တယ် လုံခြုံရေး", -1 /* HOISTED */);
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "lead mt-5 px-5"
+  "class": "lead mt-5 md:px-5 px-3"
 }, "CSO Academy ကို CSO များမှ မြန်မာနိုင်ငံရှိအဖွဲ့အစည်းများ​၏ လူထုအသိုင်းဝိုင်းသို့ နည်းပညာသုံးဖြန့်ဝေမှု နှင့် နှီးနှောဆက်သွယ်ချိတ်ဆက်မှုကို ပိုမိုတိုးတက်ကောင်းမွန်လာစေရန်အပြင် ၎င်းအဖွဲ့အစည်းများ​၏ ဒစ်ဂျစ်တယ်အသွင်ကူးပြောင်းမှုကိုအားဖြည့်အထောက်အကူပြုနိုင်ရန် ရည်ရွယ်၍တည်ဆောက်ထားပါသည်။", -1 /* HOISTED */);
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "d-none d-md-block d-lg-block d-xl-block mt-5"
@@ -20476,7 +20484,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "btn btn-cso-primary mt-3"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ကြည့်ရှုရန် ")];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" စစ်ကြည့်မည် ")];
     }),
     _: 1 /* STABLE */
   })])]);
@@ -20742,7 +20750,7 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-518613d7"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 var _hoisted_1 = {
-  "class": "border-box py-5 px-5 w-60 mx-auto"
+  "class": "border-box py-md-5 px-md-5 pt-3 mt-3 col-md-8 col-12 mx-auto"
 };
 var _hoisted_2 = ["src"];
 var _hoisted_3 = {
@@ -20810,11 +20818,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: "thumbnail"
   }, null, 8 /* PROPS */, _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.quiz.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.quiz.description), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $data.questionIndex = 0;
+      return $options.startQuiz();
     }),
     type: "button",
     "class": "btn btn-cso-primary mt-3"
-  }, "စတင်ဖြေဆိုမည်")])])], 64 /* STABLE_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  }, "စတင်မည်")])])], 64 /* STABLE_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.questionIndex + 1) + " / " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.quiz.questions.length), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "progress-container",
@@ -20887,7 +20895,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     style: {
       "display": "block"
     }
-  }, "စစ်ဆေးမည်", 8 /* PROPS */, _hoisted_20), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showDescription === undefined]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, "အဖြေကြည့်မည်", 8 /* PROPS */, _hoisted_20), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showDescription === undefined]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-cso-primary mx-auto mt-3",
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.next();
@@ -20895,7 +20903,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     style: {
       "display": "block"
     }
-  }, "နောက်ထပ်", 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showDescription !== undefined]])])])], 64 /* STABLE_FRAGMENT */))], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }, "နောက်တစ်ခု", 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showDescription !== undefined]])])])], 64 /* STABLE_FRAGMENT */))], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),
@@ -20933,10 +20941,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "border-box py-5 px-5 w-60 mx-auto"
+  "class": "border-box py-md-5 px-md-5 mt-5 col-md-8 col-12 mx-auto"
 };
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "d-block text-center mb-5"
+  "class": "d-block text-center mb-md-5 mt-3 mt-md-0"
 }, "သင်ဖြေဆိုခဲ့သော မေးခွန်းများအတွက် သင်၏ရလဒ်", -1 /* HOISTED */);
 var _hoisted_3 = {
   "class": "d-block mx-auto",
@@ -21129,7 +21137,6 @@ var actions = {
   getUser: function getUser(_ref3) {
     var commit = _ref3.commit;
     if (localStorage.userId == undefined) {
-      console.log('new');
       state.user.uuid = localStorage.userId = vue_uuid__WEBPACK_IMPORTED_MODULE_0__.uuid.v4();
       axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("/api/cso-user/" + state.user.uuid, state.user, {
         headers: {
@@ -21143,7 +21150,6 @@ var actions = {
         return console.error(err);
       });
     } else {
-      console.log('return');
       state.user.uuid = localStorage.userId;
       axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/cso-user/" + state.user.uuid, {
         headers: {
@@ -21152,7 +21158,6 @@ var actions = {
         }
       }).then(function (_ref5) {
         var data = _ref5.data;
-        console.log(data.data);
         commit('setUser', data.data);
       });
     }
@@ -21191,11 +21196,26 @@ __webpack_require__.r(__webpack_exports__);
 var state = {
   quiz: [],
   page: 1,
-  keyword: ''
+  keyword: '',
+  result: {
+    correct: 0,
+    incorrect: 0,
+    incomplete: 0
+  }
 };
 var mutations = {
   setQuiz: function setQuiz(state, item) {
     state.quiz = item;
+  },
+  setResult: function setResult(state, item) {
+    state.result = item;
+  },
+  resetResult: function resetResult(state) {
+    state.result = {
+      correct: 0,
+      incorrect: 0,
+      incomplete: 0
+    };
   }
 };
 var actions = {
@@ -21212,11 +21232,22 @@ var actions = {
     })["catch"](function (err) {
       return console.error(err);
     });
+  },
+  updateResult: function updateResult(_ref3, data) {
+    var commit = _ref3.commit;
+    commit("setResult", data);
+  },
+  resetResult: function resetResult(_ref4) {
+    var commit = _ref4.commit;
+    commit("resetResult");
   }
 };
 var getters = {
   quiz: function quiz(state) {
     return state.quiz;
+  },
+  result: function result(state) {
+    return state.result;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({

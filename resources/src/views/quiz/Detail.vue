@@ -1,5 +1,5 @@
 <template>
-    <main class="border-box py-5 px-5 w-60 mx-auto">
+    <main class="border-box py-md-5 px-md-5 pt-3 mt-3 col-md-8 col-12 mx-auto">
         <Skeleton v-if="quiz == undefined"></Skeleton>
         <template v-if="quiz != undefined">
             <template v-if="questionIndex === undefined">
@@ -8,7 +8,7 @@
                     <h3 class="fw-bold lh-1 mt-2">{{ quiz.name }}</h3>
                     <p class="lead mt-4">{{ quiz.description }}</p>
                     <p class="lead mb-5">
-                        <button @click="questionIndex = 0" type="button" class="btn btn-cso-primary mt-3">စတင်ဖြေဆိုမည်</button>
+                        <button @click="startQuiz()" type="button" class="btn btn-cso-primary mt-3">စတင်မည်</button>
                     </p>
                 </div>
             </template>
@@ -61,8 +61,8 @@
                     </template>
                     <div class="card-footer py-3">
                         <button class="btn btn-cso-primary mx-auto mt-3" @click="check()" :disabled="selectedItem.length === 0 || selectedItem == 0"
-                            v-show="showDescription === undefined" style="display: block;">စစ်ဆေးမည်</button>
-                        <button class="btn btn-cso-primary mx-auto mt-3" @click="next()" style="display: block;" v-show="showDescription !== undefined">နောက်ထပ်</button>
+                            v-show="showDescription === undefined" style="display: block;">အဖြေကြည့်မည်</button>
+                        <button class="btn btn-cso-primary mx-auto mt-3" @click="next()" style="display: block;" v-show="showDescription !== undefined">နောက်တစ်ခု</button>
                     </div>
                 </div>
             </template>
@@ -90,10 +90,13 @@ export default {
             showDescription: undefined,
             point: 0,
             showBounce: false,
-            answerType: '',
+            answerType: ''
         };
     },
     computed: {
+        storeResult() {
+            return this.$store.getters.result
+        },
         progress() {
             return ((this.questionIndex + 1)/this.quiz.questions.length) * 100;
         },
@@ -113,20 +116,24 @@ export default {
 
             var temp = this.question.items.filter(x => (tempItem.includes(x.id) && x.is_correct === 1));
             var correctAnswer = this.question.items.filter(x => (x.is_correct === 1));
-            console.log(temp.length);
-            console.log(correctAnswer.length);
             if (temp.length === correctAnswer.length) {
                 this.point += this.question.score;
                 this.showBounce = true;
                 this.answerType = "success";
+                this.storeResult.correct += 1;
                 return '✅ မှန်ကန်ပါသည်။';
             } else if (temp.length > 0 && temp.length < correctAnswer.length) {
                 this.answerType = "warning";
+                this.storeResult.incomplete += 1;
                 return '⚠️ အဖြေမှန်အားလုံးကို ရွေးချယ်ထားခြင်းမရှိပါ။';
             }
+            this.storeResult.incorrect += 1;
             this.answerType = "error";
             return '❌ မှားယွင်းနေပါသည်။'
         }
+    },
+    beforeMount() {
+        this.$store.dispatch("resetResult");
     },
     async mounted() {
         const CONSTANTS = inject('CONSTANTS');
@@ -144,6 +151,7 @@ export default {
             this.showDescription = this.question.correct_description;
         },
         next() {
+            this.$store.dispatch("updateResult", this.storeResult);
             // check answer and show correct description;
             if (this.questionIndex < (this.quiz.questions.length - 1)) this.questionIndex += 1;
             else {
@@ -162,8 +170,8 @@ export default {
                 return total + object.score;
             }, 0);
         },
-        showCountdown(i) {
-
+        startQuiz() {
+            this.questionIndex = 0;
         }
     }
 }

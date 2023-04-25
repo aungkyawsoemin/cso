@@ -1,6 +1,6 @@
 <template>
-    <main class="border-box py-5 px-5 w-60 mx-auto">
-        <h2 class="d-block text-center mb-5">သင်ဖြေဆိုခဲ့သော မေးခွန်းများအတွက် သင်၏ရလဒ်</h2>
+    <main class="border-box py-md-5 px-md-5 mt-5 col-md-8 col-12 mx-auto">
+        <h2 class="d-block text-center mb-md-5 mt-3 mt-md-0">သင်ဖြေဆိုခဲ့သော မေးခွန်းများအတွက် သင်၏ရလဒ်</h2>
         <div class="d-block mx-auto" style="width: 40%;">
             <Pie id="my-chart-id" :options="chartOptions" :data="chartData" />
         </div>
@@ -29,7 +29,7 @@ export default {
                 labels: ['အဖြေမှန်', 'အဖြေမှား', 'မတိကျသော အဖြေ'],
                 datasets: [{
                     backgroundColor: ['#6fd9ea', '#e0456f', '#e4b24c', '#DD1B16'],
-                    data: [40, 20, 12]
+                    data: [this.$store.getters.result.correct, this.$store.getters.result.incorrect, this.$store.getters.result.incomplete]
                 }]
             },
             chartOptions: {

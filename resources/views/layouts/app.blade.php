@@ -99,10 +99,8 @@
             });
             $(document).on('change', 'input[type="checkbox"]', function(){
                 this.value = (Number(this.checked)) == 1? 'true': 'false';
-                console.log(this.value)
             });
             $('.take-action').click(function() {
-                console.log('hello')
                 var target = "#"+$(this).data('modal-target');
                 $(target+' #action-loading-icon').show();
                 $(target+' button').hide();
@@ -112,7 +110,6 @@
         @stack('custom_scripts')
         <script>
             window.addEventListener("load", (event) => {
-                console.log("page is fully loaded");
                 document.body.classList.add('loaded');
             });
 

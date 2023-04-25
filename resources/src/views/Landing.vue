@@ -120,8 +120,7 @@ export default {
 
             var temp = this.question.items.filter(x => (tempItem.includes(x.id) && x.is_correct === 1));
             var correctAnswer = this.question.items.filter(x => (x.is_correct === 1));
-            console.log(temp.length);
-            console.log(correctAnswer.length);
+
             if (temp.length === correctAnswer.length) {
                 this.point += this.question.score;
                 this.showBounce = true;
