@@ -21,7 +21,7 @@
             </template>
         </template>
         <div class="card-footer py-3">
-            <button class="btn btn-cso-primary mx-auto mt-3" :disabled="selectedItem.length === 0 || selectedItem == ''" @click="check();$emit('disable-userdata');"
+            <button class="btn btn-cso-primary mx-auto mt-3" :disabled="selectedItem.length === 0 || selectedItem === ''" @click="check();$emit('disable-userdata');"
                 style="display: block;">ဖြေဆိုမည်</button>
     </div>
 </div>

@@ -169,7 +169,7 @@ export default {
             this.reset();
 
             for (var key in this.user) {
-                if(this.user[key] == null && this.attemptAnswerCount == 1) {
+                if(this.user[key] == null && this.attemptAnswerCount == 2) {
                     this.attemptAnswerCount = 0;
                     this.requestUserData = true;
                 }

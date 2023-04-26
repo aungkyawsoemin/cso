@@ -20466,7 +20466,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       }
       this.reset();
       for (var key in this.user) {
-        if (this.user[key] == null && this.attemptAnswerCount == 1) {
+        if (this.user[key] == null && this.attemptAnswerCount == 2) {
           this.attemptAnswerCount = 0;
           this.requestUserData = true;
         }
@@ -20978,7 +20978,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0
   }, [_ctx.answerType == 'success' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.showDescription), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-cso-primary mx-auto mt-3",
-    disabled: $data.selectedItem.length === 0 || $data.selectedItem == '',
+    disabled: $data.selectedItem.length === 0 || $data.selectedItem === '',
     onClick: _cache[2] || (_cache[2] = function ($event) {
       $options.check();
       _ctx.$emit('disable-userdata');
