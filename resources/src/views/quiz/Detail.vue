@@ -21,7 +21,8 @@
                 </div>
                 <!-- <img :src="quiz.thumbnail_url" class="img-fluid" alt="thumbnail"> -->
 
-                <div class="answer-box">
+                <UserData v-if="requestUserData" @disable-userdata="requestUserData = false;" />
+                <div class="answer-box" v-else>
                     <h3 class="fw-bold lh-1 mb-3">{{ question.title }}</h3>
                     <p>အဖြေမှန်တစ်ခုကို ရွေးချယ်ပါ။</p>
                     <div :class="{ 'restricted': showDescription !== undefined }">
@@ -73,12 +74,14 @@
 <script>
 import { inject } from 'vue';
 import Skeleton from "../components/skeleton.vue";
+import UserData from "../components/UserData.vue";
 
 export default {
     name: "QuizDetail",
     inject: ['CONSTANTS'],
     components: {
-        Skeleton
+        Skeleton,
+        UserData
     },
     data() {
         return {
@@ -90,10 +93,15 @@ export default {
             showDescription: undefined,
             point: 0,
             showBounce: false,
-            answerType: ''
+            answerType: '',
+            requestUserData: false,
+            attemptAnswerCount: 0,
         };
     },
     computed: {
+        user() {
+            return this.$store.getters.user
+        },
         storeResult() {
             return this.$store.getters.result
         },
@@ -149,6 +157,7 @@ export default {
         },
         check() {
             this.showDescription = this.question.correct_description;
+            this.attemptAnswerCount += 1;
         },
         next() {
             this.$store.dispatch("updateResult", this.storeResult);
@@ -158,6 +167,13 @@ export default {
                 this.$router.push({ name: 'QuizResult', params: { id: this.id } });
             }
             this.reset();
+
+            for (var key in this.user) {
+                if(this.user[key] == null && this.attemptAnswerCount == 1) {
+                    this.attemptAnswerCount = 0;
+                    this.requestUserData = true;
+                }
+            }
         },
         reset() {
             if (this.question != undefined && this.question.type == this.CONSTANTS.QUESTION_TYPE_DROPDOWN) this.selectedItem = 0;

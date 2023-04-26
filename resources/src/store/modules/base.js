@@ -59,6 +59,19 @@ const actions = {
                 commit('setUser', data.data)
             })
         }
+    },
+    updateUser({commit}, data) {
+        axios.post("/api/cso-user/"+state.user.uuid, state.user,
+            {
+                headers: {
+                    Authorization: "Basic dmdURW1aYkxaT0tiMVo3enVMdHc6WA==",
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(({data}) => {
+                commit('setUser', data.data)
+            })
+            .catch((err) => console.error(err));
     }
 }
 

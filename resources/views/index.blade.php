@@ -27,7 +27,7 @@
 
 </head>
 
-<body class="with-background d-flex flex-column">
+<body class="with-background d-flex flex-column min-vh-100">
     <div id="app" class="d-flex h-100">
     </div>
     <script>

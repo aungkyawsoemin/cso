@@ -1,5 +1,5 @@
 <template>
-  <div :data-bs-theme="getMode()" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"
+  <div :data-bs-theme="getMode()" class="cover-container d-flex min-vh-100 w-100 h-100 p-3 mx-auto flex-column"
     :class="{ 'text-bg-dark': !modeLight, 'text-bg-light': modeLight }">
     <header class="mb-auto text-center">
       <div class="container-fluid d-flex justify-content-between align-items-center">
