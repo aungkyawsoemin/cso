@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,9 +40,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('/quiz/{id}/question/edit', [QuizController::class, 'editQuestion'])->name('question.edit');
     Route::post('/quiz/{id}/question/store', [QuizController::class, 'storeQuestion'])->name('question.store');
 
-    Route::get('/report', function () {
-        return view('report.index');
-    })->name('report');
+    Route::get('/report', [ReportController::class, 'index'])->name('report');
 });
 
 require __DIR__.'/auth.php';
