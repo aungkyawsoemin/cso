@@ -41,6 +41,9 @@ class QuizController extends Controller
         $quiz->description = $request->get('description');
         $quiz->status = $request->get('status');
         $quiz->level = $request->get('level');
+        $quiz->course_name = $request->get('course_name');
+        $quiz->course_description = $request->get('course_description');
+        $quiz->course_link = $request->get('course_link');
         $quiz->save();
 
         return redirect()->route('quiz.edit', ['id' => $quiz->id])->with('status', 'Assessment data is successfully stored');

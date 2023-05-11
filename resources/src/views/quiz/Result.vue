@@ -7,6 +7,15 @@
         <div class="card-footer py-3 mt-5">
             <button @click="next()" class="btn btn-cso-primary mx-auto mt-3 d-block">ပြန်လည် ဖြေဆိုမည်</button>
         </div>
+
+        <div class="card mt-5" v-show="quiz.course_link != undefined">
+            <h5 class="card-header">အောက်ပါသင်တန်းကို အခမဲ့ လေ့လာနိုင်ပါတယ်</h5>
+            <div class="card-body">
+                <h5 class="card-title">{{ quiz.course_name }}</h5>
+                <p class="card-text">{{ quiz.course_description }}</p>
+                <a :href="quiz.course_link" target="_blank" class="btn btn-cso-primary">လေ့လာမယ်</a>
+            </div>
+        </div>
     </main>
 </template>
 
@@ -34,8 +43,22 @@ export default {
             },
             chartOptions: {
                 responsive: true
+            },
+            quiz: {
+                id: undefined,
+                course_link: undefined
             }
         }
+    },
+    computed: {
+        quizList() {
+            return this.$store.getters.quiz;
+        },
+    },
+    async mounted() {
+        await this.$store.dispatch("fetchQuiz");
+        this.quiz = this.quizList.find(x => x.id == this.id);
+        console.log(this.quiz)
     },
     methods: {
         next() {

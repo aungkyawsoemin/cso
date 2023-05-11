@@ -24,6 +24,9 @@ class QuizResource extends JsonResource
             'question_count' => $this->question_count,
             'thumbnail_url' => url($this->thumbnail_url),
             'questions' => QuestionResource::collection($this->showQuestions),
+            'course_name' => $this->course_name,
+            'course_description' => $this->course_description,
+            'course_link' => $this->course_link,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
