@@ -9,6 +9,9 @@
                     <p class="lead mt-4">{{ quiz.description }}</p>
                     <p class="lead mb-5">
                         <button @click="startQuiz()" type="button" class="btn btn-cso-primary mt-3">စတင်မည်</button>
+                        <router-link :to="{ name: 'QuizIndex' }" type="button" class="btn btn-cso-primary d-block float-end mt-3">
+                            နောက်သို့
+                        </router-link>
                     </p>
                 </div>
             </template>
@@ -85,7 +88,7 @@ export default {
     },
     data() {
         return {
-            id: 1,
+            id: this.$route.params.id,
             loading: false,
             quiz: undefined,
             questionIndex: undefined,
@@ -313,5 +316,8 @@ main {
     display: block;
 /*     border: 1px solid #dcb45e;
     border-left: 0px; */
+}
+.btn-cso-primary.float-end {
+    background-color: #D9D9D9 !important;
 }
 </style>
