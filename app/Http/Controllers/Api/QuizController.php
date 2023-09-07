@@ -17,7 +17,7 @@ class QuizController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('per_page') != ''? $request->get('per_page'): DEFAULT_PER_PAGE;
-        return QuizResource::collection(Quiz::where('status', 1)->where('question_count', '>', 0)->paginate($perPage));
+        return QuizResource::collection(Quiz::where('status', 1)->paginate($perPage));
     }
 
     /**
