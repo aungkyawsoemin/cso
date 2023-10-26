@@ -7,6 +7,8 @@ use App\Models\Quiz;
 use App\Models\Question;
 use App\Models\QuestionItem;
 use App\Models\CsoUser;
+use App\Exports\CsoUsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
@@ -18,5 +20,10 @@ class ReportController extends Controller
         $report = $query->paginate();
 
         return view('report.index', ['report' => $report, 'keywords' => $keywords]);
+    }
+    
+    public function export() 
+    {
+        return Excel::download(new CsoUsersExport, 'CsoList.xlsx');
     }
 }

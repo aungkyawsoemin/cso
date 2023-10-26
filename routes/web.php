@@ -41,6 +41,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('/quiz/{id}/question/store', [QuizController::class, 'storeQuestion'])->name('question.store');
 
     Route::get('/report', [ReportController::class, 'index'])->name('report');
+    Route::get('/report/export', [ReportController::class, 'export'])->name('report.export');
 });
 
 require __DIR__.'/auth.php';
